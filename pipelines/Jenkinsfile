@@ -2,9 +2,9 @@ import hudson.FilePath;
 import jenkins.model.Jenkins; 
 node{ 
 stage('Clone repository') { 
-git branch: 'main', credentialsId: 'PAT_sonar_RnD', url: 'https://github.azc.ext.hp.com/renukadevi-gunji/Sonar-Sample-RnD.git' 
+git branch: 'main', credentialsId: 'git', url: 'https://github.com/renuka-sonar/sonar-rnd.git' 
 }
 stage('SonarQube Analysis') 
 { 
-def scannerHome = tool 'sonarscanner-from maven'; withSonarQubeEnv() { sh "${scannerHome}/bin/sonar-scanner" } } 
+def scannerHome = tool 'sonarscanner'; withSonarQubeEnv() { sh "${scannerHome}/bin/sonar-scanner" } } 
 
